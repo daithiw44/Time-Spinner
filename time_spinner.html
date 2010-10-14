@@ -1,0 +1,46 @@
+<html><head><title>Time Spinner</title><style type="text/css">/*margin and padding on body element  can introduce errors in determining  element position and are not recommended;  we turn them off as a foundation for YUI  CSS treatments. */body {	margin:10;	padding:0;}</style>  <!--begin custom header content for this example--><link rel="stylesheet" type="text/css" href="http://192.168.1.24/~davewinders/yui/style/gallery-timespinner.css"><!--end custom header content for this example-->
+  <script src="http://192.168.1.24/~davewinders/yui/scripts/build/yui/yui-min.js">
+</script>
+<script src="http://192.168.1.24/~davewinders/yui/scripts/gallery-timespinner.js">
+</script></head><body class="yui3-skin-sam  yui-skin-sam"><div id="boxd"></div><input type=button id="button" value="button"  tabindex="1"/><br/><br/><span>time hh:mm<div id="boxd1"> </div></span><input type=button id="button1" value="button 1"  tabindex="1"/><!--BEGIN SOURCE CODE FOR EXAMPLE =============================== --><!--<div id="widget-extend-example">    A basic spinner widget: <input type="text" id="numberField" class="yui3-spinner-loading" value="20" />    <p class="hint">Click the buttons, or the arrow up/down and page up/down keys on your keyboard to change the spinner's value</p></div>--><span id="exampleContainer"></span><script>YUI(
+
+).use('gallery-timespinner', function (Y) {    // Create a new TimeSpinner instance    var timespinner = new Y.TimeSpinner({
+       hourtype:'12',
+       separator:':',
+       seconds:true,
+       timepsan:{required:true,sep:' - '},
+	   holder:'#boxd'
+    });
+    timespinner.render();
+    timespinner.focus();
+	
+	
+	var timespinner1 = new Y.TimeSpinner({
+       hourtype:'12',
+       separator:':',
+       seconds:false,
+       timepsan:{required:true,sep:' - '},
+	   holder:'#boxd1'
+    });
+    timespinner1.render();
+    timespinner1.focus();
+	
+	 var foo = Y.one("#button");
+
+	Y.on("click", function(){var ts0 = timespinner.getValue();
+									alert(ts0);
+							} ,foo);
+	
+	
+	var foo1 = Y.one("#button1");
+	Y.on("click", function(){
+	
+	var ts0 = timespinner.getValue();
+	var ts1 = timespinner1.getValue();
+	alert(ts0);
+	alert(ts1);
+	
+	} ,foo1);
+	
+	
+});</script></body></html>
